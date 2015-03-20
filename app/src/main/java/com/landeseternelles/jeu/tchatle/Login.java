@@ -1,5 +1,6 @@
 package com.landeseternelles.jeu.tchatle;
 
+import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -81,7 +82,9 @@ public class Login extends ActionBarActivity implements OnClickListener {
                 pwd.getText().toString());*/
 
         leInterface.open(loginN.getText().toString(),pwd.getText().toString(),servAddr,servPort);
-        chatOnly windowChatOnly = new chatOnly(leInterface);
+        chatOnly.leInterface = leInterface;
+        Intent intent = new Intent(Login.this, chatOnly.class);
+        startActivity(intent);
 
 
 

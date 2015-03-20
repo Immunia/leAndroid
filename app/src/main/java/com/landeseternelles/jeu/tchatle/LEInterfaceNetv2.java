@@ -52,6 +52,11 @@ public class LEInterfaceNetv2 {
         servPort = serverPort;
 
         new Thread(new ClientThread()).start();
+    }
+
+    public void connected()
+    {
+        System.out.println("connected: connected");
 
         this.startHeart_Beat();
         this.login(pseudo, password);
@@ -202,6 +207,8 @@ public class LEInterfaceNetv2 {
                     e.printStackTrace();
                 }
 
+                connected();
+
             } catch (UnknownHostException e1) {
                 e1.printStackTrace();
             } catch (IOException e1) {
@@ -216,7 +223,7 @@ public class LEInterfaceNetv2 {
                     while (true) {
                         try {
                             type = in.readByte();
-                            System.out.println("Val : " + type);
+                            //System.out.println("Val : " + type);
                             //if (type != null)
                                 break;
                         } catch (EOFException e) {

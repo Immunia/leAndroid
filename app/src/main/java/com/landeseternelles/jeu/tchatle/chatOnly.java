@@ -1,22 +1,28 @@
 package com.landeseternelles.jeu.tchatle;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 /**
  * Created by Levleyth on 19/03/2015.
  */
-public class chatOnly extends Activity
+public class chatOnly extends Activity implements View.OnClickListener
 {
-    LEInterfaceNetv2 leInterface;
+    static LEInterfaceNetv2 leInterface;
 
     final static private byte RAW_TEXT = 0;
 
-    public chatOnly(LEInterfaceNetv2 inte)
-    {
-        leInterface = inte;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        CreatecallbackRecept();
+
         leInterface.chatOnlyMod = true;
         setContentView(R.layout.activity_tchat);
-
     }
 
     public void CreatecallbackRecept()
@@ -35,13 +41,15 @@ public class chatOnly extends Activity
                 }
                 System.out.println();
                 System.out.print("Textdata: ");
-                for(int i = 0; i<data.length;i++)
-                {
-                    System.out.print((char)data[i]);
-                }
-                System.out.println("\n\n");
+
+                System.out.print(data.toString());
             }
         };
     }
 
+    @Override
+    public void onClick(View v) {
+        EditText senten = (EditText)findViewById(R.id.sentenceFull);
+        leInterface.sendRawText(senten.getText().toString());
+    }
 }
