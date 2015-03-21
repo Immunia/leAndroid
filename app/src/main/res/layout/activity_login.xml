@@ -22,18 +22,81 @@
         android:text="Name"
         android:ems="10"
         android:id="@+id/login"
-        android:layout_alignBottom="@+id/pwd"
+        android:background="#ffffffff"
+        android:layout_above="@+id/pwd"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
-        android:background="#ffffffff" />
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/login_button"
-        android:layout_marginTop="32dp"
+        android:layout_below="@+id/switch1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch1"
+        android:switchMinWidth="85dp"
+        android:textOn="test"
+        android:textOff="main"
         android:layout_below="@+id/pwd"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginTop="20dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch2"
+        android:switchMinWidth="85dp"
+        android:textOn="game"
+        android:textOff="chat"
+        android:layout_above="@+id/login"
+        android:layout_alignLeft="@+id/login_button"
+        android:layout_alignStart="@+id/login_button"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/switch2"
+        android:layout_toRightOf="@+id/switch2"
+        android:layout_toEndOf="@+id/switch2"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="main"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/switch2"
+        android:layout_toLeftOf="@+id/switch2"
+        android:layout_toStartOf="@+id/switch2"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game"
+        android:id="@+id/textView3"
+        android:layout_alignBottom="@+id/switch1"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tchat"
+        android:id="@+id/textView4"
+        android:layout_alignBottom="@+id/switch1"
+        android:layout_toLeftOf="@+id/switch1"
+        android:layout_toStartOf="@+id/switch1"
+        android:layout_marginRight="10dp" />
 
 </RelativeLayout>

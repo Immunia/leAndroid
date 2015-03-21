@@ -8,12 +8,25 @@
 
     <Button
         android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:text="New Button"
+        android:layout_height="45dp"
+        android:text="Go"
         android:id="@+id/sendFull"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sentenceFull"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/sendFull"
+        android:background="#ffffffff"
+        android:layout_toLeftOf="@+id/sendFull"
+        android:layout_alignTop="@+id/sendFull"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,25 +37,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:height="350dp"
+        android:layout_alignEnd="@+id/sendFull"
+        android:layout_above="@+id/sendFull"
         android:background="#ffffffff"
-        android:editable="false"
-        android:layout_alignRight="@+id/sendFull"
-        android:layout_alignEnd="@+id/sendFull" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/sentenceFull"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:height="90dp"
-        android:background="#ffffffff"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:enabled="false"
         android:clickable="true"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:editable="true" />
+        android:gravity="top" />
+
 </RelativeLayout>

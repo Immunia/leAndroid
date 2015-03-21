@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.landeseternelles.jeu.tchatle.LEInterfaceNetv2;
@@ -21,7 +22,7 @@ public class Login extends ActionBarActivity implements OnClickListener {
 
     //private int servPort = 3001;
     //private String servAddr = "192.168.56.1";
-    private int servPort = 3001;
+    private int servPort = 3000;
     private String servAddr = "jeu.landes-eternelles.com";
 
     @Override
@@ -81,13 +82,28 @@ public class Login extends ActionBarActivity implements OnClickListener {
                 loginN.getText().toString(),
                 pwd.getText().toString());*/
 
-        leInterface.open(loginN.getText().toString(),pwd.getText().toString(),servAddr,servPort);
-        chatOnly.leInterface = leInterface;
-        Intent intent = new Intent(Login.this, chatOnly.class);
-        startActivity(intent);
+        Switch port = (Switch)findViewById(R.id.switch1);
+        Switch mod = (Switch)findViewById(R.id.switch2);
 
+        System.out.println("port:" + port.isChecked() + " mod:" + mod.isChecked());
 
+        if(port.isChecked())
+            servPort = 3001;
 
+        leInterface.open(loginN.getText().toString(), pwd.getText().toString(), servAddr, servPort);
+
+        if(mod.isChecked()) {
+            Game.leInterface = leInterface;
+
+            Intent intent = new Intent(Login.this, Game.class);
+            startActivity(intent);
+
+        }
+        else {
+            chatOnly.leInterface = leInterface;
+            Intent intent = new Intent(Login.this, chatOnly.class);
+            startActivity(intent);
+        }
     }
 
 
