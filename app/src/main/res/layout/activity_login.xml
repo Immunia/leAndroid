@@ -8,6 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:text="Mdp"
         android:ems="10"
         android:id="@+id/pwd"
         android:background="#ffffffff"
@@ -19,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Pseudo"
         android:ems="10"
         android:id="@+id/login"
         android:background="#ffffffff"
@@ -30,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Connection"
         android:id="@+id/login_button"
         android:layout_below="@+id/switch1"
         android:layout_centerHorizontal="true"
@@ -41,24 +42,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/switch1"
         android:switchMinWidth="85dp"
-        android:textOn="test"
-        android:textOff="main"
         android:layout_below="@+id/pwd"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@+id/login_button"
+        android:layout_alignStart="@+id/login_button" />
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/switch2"
         android:switchMinWidth="85dp"
-        android:textOn="game"
-        android:textOff="chat"
         android:layout_above="@+id/login"
-        android:layout_alignLeft="@+id/login_button"
-        android:layout_alignStart="@+id/login_button"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_alignEnd="@+id/login_button"
+        android:checked="false"
+        android:layout_alignStart="@+id/switch1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,7 +81,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game"
+        android:text="Jeu"
         android:id="@+id/textView3"
         android:layout_alignBottom="@+id/switch1"
         android:layout_alignLeft="@+id/textView"

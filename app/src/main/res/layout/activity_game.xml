@@ -5,15 +5,6 @@
     android:background="#ffba7448"
     android:id="@+id/main_frame">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:height="50dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +17,11 @@
         android:layout_alignParentRight="true"
         android:layout_above="@+id/sendGameB"
         android:background="#ffffffff"
-        android:layout_margin="1dp" />
+        android:layout_margin="1dp"
+        android:editable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:clickable="false" />
 
     <Button
         android:layout_width="wrap_content"
@@ -55,13 +50,250 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
         android:id="@+id/textView5"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/walkButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/sendGameB"
         android:layout_alignEnd="@+id/sendGameB"
-        android:height="50dp" />
+        android:height="200dp" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutGame"></FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutBags">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutActors">
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutHud" >
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/myHp"
+            android:layout_gravity="top|right"
+            android:progress="50"
+            android:progressTint="#ffc0000c" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/myMana"
+            android:layout_gravity="top|right"
+            android:progress="50"
+            android:layout_marginTop="10dp"
+            android:progressTint="#ff0014ff" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/myCapacity"
+            android:layout_gravity="top|right"
+            android:progress="50"
+            android:layout_marginTop="20dp"
+            android:progressTint="#ffa9713a" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/myFood"
+            android:layout_gravity="top|right"
+            android:progress="50"
+            android:layout_marginTop="30dp"
+            android:progressTint="#fffffc72" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutFight">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/combat1"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/combat" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/combat2"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/combatdeux" />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spell1"
+        android:src="@drawable/spellheath"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spell2"
+        android:src="@drawable/spellremoteheath"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_above="@+id/spell1" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/textView5"
+        android:background="#CC000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/walkButton"
+        android:id="@+id/layoutInventory"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clickable="true">
+
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/walkButton"
+        android:src="@drawable/walkbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/attackButton" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/attackButton"
+        android:src="@drawable/attackbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/useButton" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/useButton"
+        android:src="@drawable/usebutton"
+        android:layout_alignTop="@+id/eyeButton"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eyeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/useButton"
+        android:src="@drawable/eyebutton" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tradeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/eyeButton"
+        android:src="@drawable/tradebutton" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inventoryButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/tradeButton"
+        android:src="@drawable/bagbutton" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/textView5"
+        android:id="@+id/layoutDialog"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="#CC000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/textView5"
+        android:id="@+id/layoutBagWindow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="#CC000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/textView5"
+        android:background="#CC000000"
+        android:id="@+id/tradeLayout"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+    </FrameLayout>
 
 </RelativeLayout>

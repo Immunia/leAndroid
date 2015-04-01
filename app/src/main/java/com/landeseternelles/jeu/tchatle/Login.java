@@ -82,15 +82,13 @@ public class Login extends ActionBarActivity implements OnClickListener {
                 loginN.getText().toString(),
                 pwd.getText().toString());*/
 
-        Switch port = (Switch)findViewById(R.id.switch1);
-        Switch mod = (Switch)findViewById(R.id.switch2);
+        Switch port = (Switch)findViewById(R.id.switch2);
+        Switch mod = (Switch)findViewById(R.id.switch1);
 
         System.out.println("port:" + port.isChecked() + " mod:" + mod.isChecked());
 
         if(port.isChecked())
             servPort = 3001;
-
-        leInterface.open(loginN.getText().toString(), pwd.getText().toString(), servAddr, servPort);
 
         if(mod.isChecked()) {
             Game.leInterface = leInterface;
@@ -104,6 +102,14 @@ public class Login extends ActionBarActivity implements OnClickListener {
             Intent intent = new Intent(Login.this, chatOnly.class);
             startActivity(intent);
         }
+
+        //PROV
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        leInterface.open(loginN.getText().toString(), pwd.getText().toString(), servAddr, servPort);
     }
 
 

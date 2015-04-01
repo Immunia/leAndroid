@@ -1,5 +1,7 @@
 package com.landeseternelles.jeu.tchatle;
 
+import android.app.Activity;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -36,6 +38,26 @@ public class LEInterfaceNetv2 {
     final static private byte HEART_BEAT = 14;
     final static private byte MOVE_TO = 1;
     final static private byte ATTACK_SOMEONE = 40;
+    final static private byte GET_PLAYER_INFO = 5;
+    final static private byte TRADE_WITH = 32;
+    final static private byte ACCEPT_TRADE = 33;
+    final static private byte REJECT_TRADE = 34;
+    final static private byte EXIT_TRADE = 35;
+    final static private byte PUT_OBJECT_ON_TRADE = 36;
+    final static private byte REMOVE_OBJECT_FROM_TRADE = 37;
+    final static private byte LOOK_AT_TRADE_ITEM = 38;
+    final static private byte MOVE_INVENTORY_ITEM = 20;
+    final static private byte USE_INVENTORY_ITEM = 31;
+    final static private byte TOUCH_PLAYER = 28;
+    final static private byte RESPOND_TO_NPC = 29;
+    final static private byte CAST_SPELL = 39;
+    final static private byte DROP_ITEM = 22;
+    final static private byte PICK_UP_ITEM = 23;
+    final static private byte LOOK_AT_GROUND_ITEM = 24;
+    final static private byte INSPECT_BAG = 25;
+    final static private byte S_CLOSE_BAG = 26;
+
+    public static Activity ui;
 
     public Boolean chatOnlyMod = false;
 
@@ -146,11 +168,175 @@ public class LEInterfaceNetv2 {
 
     public void attackActor(int actorId) {
         // TODO Auto-generated method stub
-        byte[] message = new byte[2];
+        //byte[] message = new byte[2];
+        byte[] message = new byte[4];
+        message[3] = (byte) (0);
+        message[2] = (byte) (0);
         message[0] = (byte) (actorId % 256);
         message[1] = (byte) (actorId / 256);
 
         send(ATTACK_SOMEONE, message);
+    }
+
+    public void getInfosActor(int actorId) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[4];
+        message[3] = (byte) (0);
+        message[2] = (byte) (0);
+        message[0] = (byte) (actorId % 256);
+        message[1] = (byte) (actorId / 256);
+
+        send(GET_PLAYER_INFO , message);
+    }
+
+    public void tradeActor(int actorId) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[4];
+        message[0] = (byte) (actorId % 256);
+        message[1] = (byte) ((actorId/256)%256);
+        message[2] = (byte) ((actorId/256/256)%256);
+        message[3] = (byte) ((actorId/256/256/256));
+
+        send(TRADE_WITH, message);
+    }
+
+    public void tradeAccept() {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[1];
+        message[0] = (byte) (1);
+
+        send(ACCEPT_TRADE, message);
+    }
+
+    public void tradeReject() {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[1];
+        message[0] = (byte) (1);
+
+        send(REJECT_TRADE, message);
+    }
+
+    public void tradeExit() {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[1];
+        message[0] = (byte) (1);
+
+        send(EXIT_TRADE, message);
+    }
+
+    public void moveInventoryItem(int posIni, int posEnd) {
+        // TODO Auto-generated method stub
+        byte[] message = new byte[2];
+        message[0] = (byte) (posIni);
+        message[1] = (byte) (posEnd);
+
+        send(MOVE_INVENTORY_ITEM, message);
+    }
+
+    public void putObjectOnTrade(int where, int pos, int quant) {
+        // TODO Auto-generated method stub
+        byte[] message = new byte[7];
+        message[0] = (byte) (where);
+        message[1] = (byte) (pos);
+        message[2] = (byte) (pos/256);
+        message[3] = (byte) (quant%256);
+        message[4] = (byte) ((quant/256)%256);
+        message[5] = (byte) ((quant/256/256)%256);
+        message[6] = (byte) ((quant/256/256/256));
+
+        send(PUT_OBJECT_ON_TRADE, message);
+    }
+
+    public void touchPlayer(int actorId) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[4];
+        message[0] = (byte) (actorId % 256);
+        message[1] = (byte) ((actorId/256)%256);
+        message[2] = (byte) ((actorId/256/256)%256);
+        message[3] = (byte) ((actorId/256/256/256));
+
+        send(TOUCH_PLAYER, message);
+    }
+
+    public void castSpell(byte[] sigils) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[sigils.length + 1];
+        message[0] = (byte) (sigils.length);
+        for (int i = 1 ; i <= message[0] ; i++)
+            message[i] = (byte) (sigils[i-1]);
+
+        send(CAST_SPELL, message);
+    }
+
+    public void inspectBag(int i) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[1];
+        message[0] = (byte) (i);
+
+        send(INSPECT_BAG, message);
+    }
+
+    public void closeBag() {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[1];
+        message[0] = (byte) (1);
+
+        send(S_CLOSE_BAG, message);
+    }
+
+    public void dropItem(int pos, int quant) {
+        // TODO Auto-generated method stub
+        byte[] message = new byte[6];
+        message[0] = (byte) (pos);
+        message[1] = (byte) (quant%256);
+        message[2] = (byte) ((quant/256)%256);
+        message[3] = (byte) ((quant/256/256)%256);
+        message[4] = (byte) ((quant/256/256/256));
+
+        send(DROP_ITEM, message);
+    }
+
+    public void pickUpItem(int pos, int quant) {
+        // TODO Auto-generated method stub
+        byte[] message = new byte[6];
+        message[0] = (byte) (pos);
+        message[1] = (byte) (quant % 256);
+        message[2] = (byte) ((quant / 256) % 256);
+        message[3] = (byte) ((quant / 256 / 256) % 256);
+        message[4] = (byte) ((quant / 256 / 256 / 256));
+
+        send(PICK_UP_ITEM , message);
+    }
+
+    public void respondNpc(int actorId, int repId) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[4];
+        message[0] = (byte) (actorId % 256);
+        message[1] = (byte) (actorId / 256);
+        message[2] = (byte) (repId % 256);
+        message[3] = (byte) (repId / 256);
+
+        send(RESPOND_TO_NPC , message);
+    }
+
+    public void useInventoryItem(int pos) {
+        // TODO Auto-generated method stub
+        //byte[] message = new byte[2];
+        byte[] message = new byte[2];
+        message[0] = (byte) (pos % 256);
+        message[1] = (byte) (pos / 256);
+
+        send(USE_INVENTORY_ITEM , message);
     }
 
     private void login(String pseudo, String pwd)
@@ -225,7 +411,7 @@ public class LEInterfaceNetv2 {
                             type = in.readByte();
                             //System.out.println("Val : " + type);
                             //if (type != null)
-                                break;
+                            break;
                         } catch (EOFException e) {
                             //System.out.println("Val : Except");
                         }
@@ -237,8 +423,15 @@ public class LEInterfaceNetv2 {
                     for (int i = 0; i < dataLength; i++) {
                         data[i] = in.readByte();
                     }
-                    reception.callbackFunc(type, data);
-                } catch (Exception e) {
+                    final byte type2 = type;
+                    final byte[] data2 = data;
+                    ui.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            reception.callbackFunc(type2, data2);
+                        }
+                    });
+                }catch (Exception e) {
                     e.printStackTrace();
                     if ("Socket closed".equals(e.getMessage()))
                         break;

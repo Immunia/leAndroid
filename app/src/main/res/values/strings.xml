@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">Tchat LE</string>
+    <string name="app_name">LE Android Alpha</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="country_array">
+        <item>Greece</item>
+        <item>United Kingdom</item>
+        <item>Italy</item>
+    </string-array>
 </resources>

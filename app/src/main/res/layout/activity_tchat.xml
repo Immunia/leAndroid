@@ -18,19 +18,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sentenceFull"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/sendFull"
-        android:background="#ffffffff"
-        android:layout_toLeftOf="@+id/sendFull"
-        android:layout_alignTop="@+id/sendFull"
-        android:layout_marginRight="10dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/tchatFull"
@@ -38,14 +25,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/sendFull"
-        android:layout_above="@+id/sendFull"
         android:background="#ffffffff"
-        android:layout_marginBottom="20dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="false"
         android:enabled="false"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="top" />
+        android:gravity="top"
+        android:layout_above="@+id/sendFull"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sentenceFull"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/sendFull"
+        android:layout_alignTop="@+id/sendFull"
+        android:background="#ffffffff"
+        android:singleLine="true" />
 
 </RelativeLayout>
